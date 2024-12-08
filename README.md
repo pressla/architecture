@@ -20,6 +20,7 @@ source venv/bin/activate
 
 ```bash
 pip install mkdocs-material
+pip install mkdocs_puml
 ```
 
 3. Serve the documentation locally:
