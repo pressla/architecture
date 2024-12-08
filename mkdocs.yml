@@ -34,7 +34,7 @@ nav:
     - Technology Stack: technology-stack.md
     - UI Journey Einlesen/Match: ui-journey-einlesen-match.md
   - etc:
-    - AI Stack: detailAI-Pipeline/detail_AI_pipeline_assumptions.md
+    - AI Stack: detail_AI_pipeline_assumptions.md
     - OAuth2 Model: security/oauth2-model.md
   - Prozess:
     - Product Innovation: process/product-innovation.md
