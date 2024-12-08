@@ -1,0 +1,51 @@
+@startuml
+'Style configurations
+skinparam ActivityBackgroundColor LightBlue
+skinparam ActivityBorderColor Blue
+skinparam ArrowColor Blue
+skinparam ActivityDiamondBackgroundColor LightGray
+skinparam ActivityDiamondBorderColor Gray
+
+|# Benutzer|
+start
+:Benutzerregistrierung;
+
+|# Hausplan-Management|
+:Hausplan Upload;
+:Automatische Analyse;
+
+|# Planung|
+fork
+    :Manuelle Konfiguration;
+fork again
+    :3D Visualisierung;
+end fork
+
+|# Angebot|
+:Kostenkalkulation;
+
+|# Integration & Speicherung|
+fork
+    :Versionierung;
+fork again
+    :ERP/CAD Integration;
+end fork
+
+|# Kollaboration|
+fork
+    :Benachrichtigungen;
+fork again
+    :Team Kommunikation;
+end fork
+
+|# Abschluss|
+:Angebotserstellung;
+
+stop
+
+legend right
+  |= Typ |= Bedeutung |
+  |<back:LightBlue>   | Mandatory |
+  |<back:LightGray>   | Optional |
+endlegend
+@enduml

@@ -1,0 +1,71 @@
+@startuml Product Innovation Process
+
+skinparam state {
+  BackgroundColor<<Research>> LightBlue
+  BackgroundColor<<Design>> LightGreen
+  BackgroundColor<<Implementation>> LightYellow
+  BackgroundColor<<Validation>> LightPink
+}
+
+[*] --> ResearchPhase
+
+state ResearchPhase <<Research>> {
+  state "Research Existing Products" as ExistingProducts
+  state "Analyze Weaknesses" as Weaknesses
+  state "Research Reusable Implementations" as ReusableImpl
+  
+  ExistingProducts --> Weaknesses
+  Weaknesses --> ReusableImpl
+}
+
+state "Initial Design" as InitialDesign <<Design>> {
+  state "Draft Design" as DraftDesign
+  state "Define Non-Functional Tests" as DefineTests
+  
+  DraftDesign --> DefineTests
+}
+
+state "PoC Phase" as PoCPhase <<Implementation>> {
+  state "Implement PoC" as ImplementPoC
+  state "Implement Tests" as ImplementTests
+  
+  ImplementPoC --> ImplementTests
+}
+
+state "Design Validation" as DesignValidation <<Validation>>
+
+state "Refinement Phase" as RefinementPhase <<Design>> {
+  state "Refine Design" as RefineDesign
+  state "Define Data Model" as DataModel
+  state "Design Deployment" as Deployment
+  state "Design CI/CD Probes" as CICDProbes
+  
+  RefineDesign --> DataModel
+  DataModel --> Deployment
+  Deployment --> CICDProbes
+}
+
+state "Implementation Phase" as ImplementationPhase <<Implementation>> {
+  state "Iterative Implementation" as IterativeImpl
+  state "Create Sprint Release" as SprintRelease
+  
+  IterativeImpl --> SprintRelease
+}
+
+state "Stakeholder Review" as StakeholderReview <<Validation>>
+
+ResearchPhase --> InitialDesign
+InitialDesign --> PoCPhase
+PoCPhase --> DesignValidation
+
+DesignValidation --> RefinementPhase : Tests Passed
+DesignValidation --> InitialDesign : Tests Failed
+
+RefinementPhase --> ImplementationPhase
+ImplementationPhase --> StakeholderReview
+
+StakeholderReview --> ImplementationPhase : Minor Changes
+StakeholderReview --> RefinementPhase : Major Changes
+StakeholderReview --> [*] : Approved
+
+@enduml

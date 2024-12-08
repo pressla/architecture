@@ -1,0 +1,23 @@
+Kategorie,Functional Interfaces (mandatory/optional),Functional Frontend,Non-Functional
+Benutzerregistrierung und -verwaltung,"- Rollen- und Berechtigungssystem zur Differenzierung zwischen Kunden und Vertriebsmitarbeitern (mandatory) 
+- Benutzerprofilverwaltung (mandatory)","- UI zur Registrierung, Anmeldung und Verwaltung von Benutzerprofilen 
+- Rollenbasierte UI (z. B. für Kunden und Vertrieb)","- Sicherheit: Verschlüsselung, Authentifizierung, Autorisierung 
+- DSGVO-Compliance"
+Hausplan-Upload und Analyse,"- Upload-Schnittstellen für verschiedene Formate: PDF, CAD (mandatory) 
+- Algorithmus für die Zerlegung der Hauspläne in Standardmodule (mandatory)","- Upload-UI mit Fortschrittsanzeige 
+- Visualisierung der Analyseergebnisse im Frontend","- Performance: Optimierte Analysealgorithmen 
+- Zuverlässigkeit: Verlässliche Verarbeitung von Dateien"
+Manuelle Planung und Konfiguration,"- Drag-and-Drop-Schnittstellen für Konfigurationsmodule (optional)","- Interaktive Benutzeroberfläche für die Planung (Drag-and-Drop) 
+- Echtzeit-Visualisierung","- Benutzerfreundlichkeit: Intuitive Bedienbarkeit 
+- Skalierbarkeit für komplexe Pläne"
+3D-Visualisierung und Virtual Reality,"- APIs zur Integration mit 3D-Rendering-Engines (z. B. Unity, Unreal Engine) (optional)","- 3D-Vorschau-Ansicht im Frontend 
+- Virtuelle Rundgänge für immersive Hausbegehungen","- Performance: Schnelle Ladezeiten 
+- Zuverlässigkeit bei hohen Datenanforderungen"
+Kostenschätzung und Angebotserstellung,"- Module zur automatischen Kostenberechnung basierend auf Modulen und Zusatzoptionen (mandatory)","- UI zur Erstellung und Bearbeitung von Angeboten 
+- Export als PDF oder andere Formate","- Skalierbarkeit: Verarbeitung mehrerer Angebote parallel"
+Speicherung und Abruf von Plänen,"- Versionierungsschnittstellen für Pläne (mandatory)","- UI zur Verwaltung von gespeicherten Plänen und ihrer Historie","- Zuverlässigkeit: Backup und Wiederherstellung von Projektdaten"
+Kollaborative Funktionen,"- Schnittstellen für Chat und Kommentarfunktionen zur Zusammenarbeit (optional)","- UI für Echtzeit-Kommunikation (Chat und Kommentare)","- Verfügbarkeit: Minimierung von Ausfallzeiten"
+Benachrichtigungssystem,"- Schnittstellen für E-Mail- oder Push-Benachrichtigungen (optional)","- UI für die Verwaltung von Benachrichtigungspräferenzen","- Skalierbarkeit: Verarbeitung hoher Nachrichtenmengen"
+Integrationen,"- Schnittstellen zu gängigen Architektur- und Planungssoftwares (z. B. AutoCAD, Revit) (mandatory) 
+- APIs zur Synchronisierung mit ERP- und Produktionssystemen (mandatory)","- -","- Interoperabilität: Unterstützung verschiedener Dateiformate und Betriebssysteme"
+Sicherheit,"- Sicherheitsmaßnahmen wie SSL-Verschlüsselung, Authentifizierung und Autorisierung (mandatory)","- -","- Einhaltung von Datenschutzrichtlinien wie DSGVO"

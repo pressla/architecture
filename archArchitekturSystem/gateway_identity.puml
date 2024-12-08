@@ -1,0 +1,40 @@
+@startuml Gateway and Identity Architecture
+
+' Purpose: This diagram represents the security and access control layer of the system.
+' It shows how the API Gateway manages all incoming requests and integrates with
+' the Identity & Access Management service to ensure secure access to the platform.
+' The architecture implements a robust authentication and authorization system,
+' supporting both web and VR interfaces while maintaining centralized user management.
+
+' External Systems
+component "Web Frontend" as webUI
+component "VR Frontend" as vrUI
+
+' API Gateway
+component "API Gateway" as gateway {
+    port "auth" as gwAuth
+    port "api" as gwApi
+}
+
+' Identity Services
+component "Identity & Access Management" as iam {
+    port "auth" as iamAuth
+    port "user-mgmt" as iamUser
+}
+
+' Infrastructure Components
+database "User DB" as userDB
+queue "Identity Message Broker" as identityBroker
+
+' Connections
+gateway --> iam : "authenticates"
+gateway --> webUI : "serves"
+gateway --> vrUI : "serves"
+
+iam --> userDB : "persists"
+iam ..> identityBroker : "publishes user events"
+
+webUI --> gateway
+vrUI --> gateway
+
+@enduml

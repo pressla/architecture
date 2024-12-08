@@ -1,0 +1,79 @@
+@startuml BIM AI Architecture
+
+skinparam component {
+  BackgroundColor<<Input>> LightBlue
+  BackgroundColor<<Processing>> LightGreen
+  BackgroundColor<<AI>> LightYellow
+  BackgroundColor<<Database>> LightPink
+}
+
+package "Input Processing" {
+  [Building Plan Scanner] <<Input>> as scanner
+  [PDF/CAD Converter] as converter
+  [Vector Data Extractor] as vectorizer
+}
+
+package "AI Processing Pipeline" {
+  [Feature Extraction CNN] <<AI>> as cnn
+  [Room Boundary Detection] <<AI>> as boundary
+  [Module Pattern Recognition] <<AI>> as pattern
+  [Semantic Segmentation] <<AI>> as semantic
+}
+
+package "BIM Integration" {
+  [Module Matcher] as matcher
+  database "BIM Database" <<Database>> as bim
+  [Module Selector] as selector
+}
+
+cloud "Pre-trained Models" {
+  [Room Layout Models] as layout
+  [Object Detection Models] as object
+}
+
+// Flow
+scanner --> converter
+converter --> vectorizer
+vectorizer --> cnn
+
+cnn --> boundary
+boundary --> pattern
+pattern --> semantic
+
+layout --> cnn
+object --> semantic
+
+semantic --> matcher
+bim --> matcher
+matcher --> selector
+
+note right of scanner
+  Supports multiple input formats:
+  - PDF architectural plans
+  - CAD files (DWG, DXF)
+  - Scanned blueprints
+end note
+
+note right of cnn
+  CNN Architecture:
+  - ResNet backbone
+  - Feature Pyramid Network
+  - Instance Segmentation heads
+end note
+
+note right of semantic
+  Semantic Understanding:
+  - Room type classification
+  - Wall detection
+  - Door/window recognition
+  - Module requirements mapping
+end note
+
+note right of matcher
+  Matching Algorithm:
+  - Graph similarity matching
+  - Spatial relationship analysis
+  - Module compatibility check
+end note
+
+@enduml

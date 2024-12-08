@@ -1,0 +1,64 @@
+@startuml Core Business Services Architecture
+
+' Purpose: This diagram illustrates the core business services that handle the main 
+' functionality of the modular house planning system. It shows how different services
+' interact to process house plans, manage configurations, provide visualizations,
+' and calculate costs. The architecture uses a message broker for event-driven
+' communication, ensuring loose coupling between services while maintaining data
+' consistency across the platform.
+
+skinparam component {
+    BackgroundColor<<external>> LightGray
+    BorderColor<<external>> Gray
+}
+
+' External Systems
+component "3D Engine\n(Unity/Unreal)" <<external>> as ThreeD
+
+' Core Services
+component "House Plan Service" as planService {
+    port "upload" as planUpload
+    port "analyze" as planAnalyze
+}
+
+component "Planning & Configuration Service" as configService {
+    port "config" as configPort
+    port "modules" as modulesPort
+}
+
+component "3D Visualization Service" as vizService {
+    port "render" as renderPort
+    port "vr" as vrPort
+}
+
+component "Cost Estimation Service" as costService {
+    port "calculate" as calcPort
+    port "offer" as offerPort
+}
+
+component "Plan Storage Service" as storageService {
+    port "store" as storePort
+    port "version" as versionPort
+}
+
+' Infrastructure Components
+database "Plan DB" as planDB
+database "Version DB" as versionDB
+queue "Core Message Broker" as coreBroker
+
+' Connections
+ThreeD --> vizService
+
+planService --> planDB : "stores plans"
+storageService --> versionDB : "version control"
+
+planService --> coreBroker : "publishes updates"
+costService --> coreBroker : "subscribes to changes"
+
+' Service Interactions
+planService ..> configService : "provides modules"
+configService ..> vizService : "sends configuration"
+configService ..> costService : "requests calculation"
+storageService ..> planService : "version management"
+
+@enduml

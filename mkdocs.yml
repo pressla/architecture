@@ -1,0 +1,38 @@
+site_name: ModulHaus
+site_url: https://mydomain.org/mysite
+theme:
+  name: material
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: plantuml
+          class: plantuml
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Disclaimer: disclaimer.md
+  - Vorgaben:
+    - Aufgabe: Input/modular-house-planning-system.md
+    - Designübersicht: Input/design-overview-de.md
+  - Analyse:
+    - Anforderungsanalyse: Analysis/requirements-analyse.md
+    - AI Details und feasibility: presentation/presentation_executive_de.md
+  - Architektur:
+    - Core Services: core-services.md
+    - BIM AI Architecture: bim-ai-architecture.md
+    - BIM Model: bim-model.md
+    - Service Architecture: service-architecture.md
+    - Technology Stack: technology-stack.md
+    - UI Journey Einlesen/Match: ui-journey-einlesen-match.md
+  - etc:
+    - AI Stack: detailAI-Pipeline/detail_AI_pipeline_assumptions.md
+    - OAuth2 Model: security/oauth2-model.md
+  - Prozess:
+    - Product Innovation: process/product-innovation.md
