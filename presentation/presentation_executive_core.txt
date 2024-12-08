@@ -1,0 +1,49 @@
+Slide 1: Objective and Scope
+The goal is to build a system that can identify, classify, and extract building elements from vectorized floor plans to create a 3D BIM model and generate a parts list for production. The system must detect walls, openings, and dimensions, then match them with BIM elements while assuming default values for height and window positions. This automated pipeline offers scalability for large architectural datasets, reducing manual labor and ensuring precision in building information modeling.
+
+Slide 2: Features and Challenges
+Key features to extract include wall segments (perimeter and inner), openings (doors and windows), and their geometric relationships. Challenges include:
+
+Floor plans lack 3D data, requiring assumptions for heights and positions.
+Irregularities in drawings (e.g., non-rectangular walls, gaps) necessitate preprocessing.
+Ensuring clean data input for efficient model training and inference.
+Automating this process provides faster design-to-production workflows, minimizing errors and improving project timelines.
+Slide 3: Preprocessing with Shapely
+Shapely is used to clean and structure geometric data:
+
+Walls: Extract lines/polylines, determine thickness, and rectangularize segments for consistent data representation.
+Openings: Identify gaps or approximate default dimensions for windows and doors.
+Relationships: Link openings to walls and classify wall types (perimeter vs. inner).
+This step ensures high-quality data input for machine learning models, reducing inconsistencies in feature representation, which directly improves model performance.
+Slide 4: Learning Phase Architecture
+The learning phase trains a hybrid CNN-Transformer model:
+
+Data Processing: Libraries like ezdxf and Shapely extract features. Augmentations (e.g., scaling, rotations) enhance robustness.
+Model Training: PyTorch is used for implementing and training a neural network. NVIDIA DALI accelerates data loading, while metrics are tracked using TensorBoard or WandB.
+Evaluation: Metrics such as F1-score and confusion matrices ensure model reliability.
+Investing in powerful GPUs like NVIDIA A100 reduces training time and costs, enabling quicker iterations and scalability for new datasets.
+Slide 5: Inference Phase Pipeline
+Inference focuses on real-time processing for production:
+
+Process floor plan inputs to detect and classify elements.
+Perform forward passes using a pre-trained model, optimized with ONNX and NVIDIA TensorRT for low-latency, high-throughput deployment.
+Post-process outputs to generate 3D models and parts lists, integrating seamlessly into BIM workflows.
+This enables architectural firms and manufacturers to automatically generate production-ready designs, reducing human errors and operational delays.
+Slide 6: Estimating Computing and Memory Needs
+Training:
+Total compute depends on dataset size, model complexity, and number of epochs. For example, training on 1000 plans with a 10M-parameter model can take ~2.5 PFLOPs over 50 epochs.
+Hardware: High-performance GPUs (e.g., NVIDIA A100) are essential, with ~312 TFLOPs for efficient training.
+Inference:
+For real-time inference, a single forward pass involves ~50 GFLOPs. GPUs like NVIDIA T4 or Jetson handle up to ~6240 plans/second.
+Optimizing computing resources ensures cost-effectiveness while meeting performance demands for both learning and deployment.
+Slide 7: Business Impact and ROI
+Automation: Replacing manual tasks with AI-driven workflows cuts labor costs and reduces errors in floor plan analysis and BIM modeling.
+Scalability: A robust system can handle large datasets and varied architectural designs, allowing firms to scale projects without increasing overhead.
+Efficiency: Real-time inference enables faster design-to-production transitions, shortening project delivery times and improving client satisfaction.
+Investing in this system enhances competitiveness in the AEC (Architecture, Engineering, Construction) industry by reducing costs and accelerating project timelines.
+Slide 8: Next Steps
+Build and test the preprocessing pipeline for feature extraction.
+Design and train the hybrid CNN-Transformer model on labeled datasets.
+Deploy the model using optimized inference frameworks and test on real-world plans.
+Measure ROI by assessing time, cost savings, and accuracy improvements in sample projects.
+This phased approach ensures the solution is validated and scalable, maximizing business impact with minimized risks.

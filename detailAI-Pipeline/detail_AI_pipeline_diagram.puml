@@ -1,0 +1,79 @@
+@startuml NVIDIA NIM Processing Pipeline
+!theme plain
+skinparam backgroundColor transparent
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+top to bottom direction
+
+rectangle "Data Sources" as DS {
+    [Raw Images] as RI
+    [Training Data] as TD
+    [Validation Data] as VD
+}
+
+package "Data Preprocessing Module" as DPM {
+    [NVIDIA DALI Loader] as NDL
+    [Data Augmentation] as DA
+    [Batch Processing] as BP
+}
+
+package "Model Definition & Training" as MDT {
+    [CNN Architecture] as CNN
+    [Training Loop] as TL
+    [Mixed Precision Training] as MPT
+    [NVIDIA Apex] as NA
+}
+
+package "Distributed Processing" as DP {
+    [NVIDIA NCCL] as NC
+    [Multi-GPU Distribution] as MGD
+}
+
+package "Model Optimization" as MO {
+    [TensorRT Integration] as TRT
+    [ONNX Export] as OE
+}
+
+package "Deployment & Inference" as DI {
+    [Edge Devices] as ED
+    [Data Centers] as DC
+    [Inference Pipeline] as IP
+}
+
+package "Monitoring & Evaluation" as ME {
+    [Performance Metrics] as PM
+    [Model Analytics] as MA
+}
+
+' Data flow connections
+DS --> DPM
+DPM --> MDT
+MDT <--> DP : Distributed Training
+MDT --> MO : Model Export
+MO --> DI : Optimized Model
+DI --> ME : Runtime Metrics
+ME ..> MDT : Feedback Loop
+
+' Detailed connections
+RI --> NDL
+TD --> NDL
+VD --> NDL
+NDL --> DA
+DA --> BP
+BP --> CNN
+CNN --> TL
+TL <--> MPT
+MPT <--> NA
+TL <--> NC
+NC <--> MGD
+TL --> TRT
+TRT --> OE
+OE --> ED
+OE --> DC
+ED --> IP
+DC --> IP
+IP --> PM
+PM --> MA
+
+@enduml
