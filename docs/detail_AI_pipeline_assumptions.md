@@ -1,8 +1,8 @@
 # NVIDIA NIM Framework für CNN-Entwicklung
 
 Das NVIDIA NIM (Neural Information Modeler) Framework ist ein hochleistungsfähiges, modulares Werkzeug für die Entwicklung, das Training und die Bereitstellung von Deep-Learning-Modellen, einschließlich Convolutional Neural Networks (CNNs).
+![image inference](nvidia-nim-layer.png)
 <figure markdown>
-![image inference](http://localhost:8000/mysite/nvidia-nim-layer.png)
 Quelle:NVIDIA Developer Program
 </figure>
 
@@ -37,8 +37,8 @@ Quelle:NVIDIA Developer Program
 - Optimierer (SGD, Adam oder momentum-basierte Optimierer mit NVIDIA Apex für Mixed-Precision-Training)
 - Lernraten-Scheduler für dynamische Anpassung
 - Überwachungswerkzeuge (Tensorboard-ähnliche Funktionen)
+![image inference](nvidia-nim-reference-architecture.png)
 <figure markdown>
-![image inference](http://localhost:8000/mysite/nvidia-nim-reference-architecture.png)
 Quelle:NVIDIA Developer Program
 </figure>
 ### Inferenzmodul
@@ -48,8 +48,8 @@ Quelle:NVIDIA Developer Program
 **Komponenten**:
 - TensorRT-Integration für Hochleistungs-Inferenz
 - Modellkonvertierungswerkzeuge für den Export in das ONNX-Format
+![image inference](nvidia-nim-inference.png)
 <figure markdown>
-![image inference](http://localhost:8000/mysite/nvidia-nim-inference.png)
 Quelle:NVIDIA Developer Program
 </figure>
 ### Verteiltes Trainingsmodul
