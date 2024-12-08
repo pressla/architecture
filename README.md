@@ -41,7 +41,7 @@ This repository is configured to automatically deploy the documentation to GitHu
 
 The documentation is automatically updated on every push to the main branch. You can view the live documentation at:
 
-`https://[username].github.io/[repository-name]`
+["https://pressla.github.io/architecture"](https://pressla.github.io/architecture)
 
 Replace `[username]` with your GitHub username and `[repository-name]` with this repository name.
 
