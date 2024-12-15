@@ -1,69 +1,66 @@
-# Disclaimer and Methodology
+# Haftungsausschluss und Methodik
 
-## Design Methodology
+## Design-Methodik
 
-This architecture documentation follows the principles of Clean Architecture as proposed by Robert C. Martin. The Clean Architecture approach ensures:
+Diese Architekturdokumentation folgt den Prinzipien der Clean Architecture, wie sie von Robert C. Martin beschrieben wird
 
-- Independence of frameworks
-- Testability
-- Independence of UI
-- Independence of Database
-- Independence of any external agency
+- Unabhängigkeit von Frameworks
+- Testbarkeit
+- Unabhängigkeit der Benutzeroberfläche
+- Unabhängigkeit der Datenbank
+- Unabhängigkeit von externen Systemen
+![bild](clean-architecture-diagram.png)
 
-### System Design Approach
+### System-Design-Ansatz
 
-The system is designed using the following layered approach:
+Das System ist nach folgendem Schichtenmodell aufgebaut:
 
 1. **Enterprise Business Rules** (Entities)
 2. **Application Business Rules** (Use Cases)
 3. **Interface Adapters** (Controllers, Presenters, Gateways)
 4. **Frameworks and Drivers** (Web, UI, DB, Devices, External Interfaces)
 
-## Documentation Toolchain
+## Dokumentations-Toolchain
 
-This documentation is built using:
+Diese Dokumentation wird erstellt mit:
 
-- **Material for MkDocs**: A modern documentation static site generator
-- **Mermaid.js**: For sequence diagrams and flowcharts
-- **PlantUML**: For detailed architectural diagrams and component visualization
+- **Material for MkDocs**: Ein moderner Generator für statische Dokumentationswebseiten
+- **Mermaid.js**: Für Sequenzdiagramme und Flussdiagramme
+- **PlantUML**: Für detaillierte Architekturdiagramme und Komponentenvisualisierung
+- **GitHub Workflow**: CI-Workflow zur Erstellung der HTML-Seiten
 
-## Requirements Analysis
+## Anforderungsanalyse
 
-The requirements analysis follows a systematic approach:
+Die Anforderungsanalyse folgt einem systematischen Ansatz:
 
-### Functional Requirements
-- Core business capabilities
-- System behaviors
-- User interactions
-- Data processing requirements
+### Funktionale Anforderungen
+- Kerngeschäftsfähigkeiten
+- Systemverhalten
+- Benutzerinteraktionen
+- Datenverarbeitungsanforderungen
 
-### Non-Functional Requirements
-- Performance metrics
-- Security requirements
-- Scalability considerations
-- Reliability standards
-- Maintainability aspects
+### Nicht-funktionale Anforderungen
+- Leistungskennzahlen
+- Sicherheitsanforderungen
+- Skalierbarkeitsüberlegungen
+- Zuverlässigkeitsstandards
+- Wartbarkeitsaspekte
 
-## Customer Journey Integration
+## Integration der Customer Journey
 
-The architecture considers the complete customer journey, ensuring that technical implementations align with user experiences and business processes. The journey mapping helps identify:
+Die Architektur berücksichtigt die gesamte Customer Journey und stellt sicher, dass technische Implementierungen mit Benutzererfahrungen und Geschäftsprozessen übereinstimmen. Die Journey-Mapping hilft bei der Identifizierung von:
 
-- Touch points
-- Integration requirements
-- Service dependencies
-- User experience flows
+- Berührungspunkten
+- Integrationsanforderungen
+- Service-Abhängigkeiten
+- Benutzerablaufprozessen
 
-## Content Attribution
+## Urheberschaft des Inhalts
 
-All content in this documentation is uniquely created by the author with assistance from Claude Sonnet (Anthropic, 2024 version). The combination of human expertise and AI capabilities ensures:
+Alle Inhalte dieser Dokumentation wurden vom Autor unter Mitwirkung von Claude Sonnet (Anthropic, Version 2024) einzigartig erstellt. Die Kombination aus menschlicher Expertise und KI-Fähigkeiten gewährleistet:
 
-- Comprehensive technical documentation
-- Clear architectural decisions
-- Consistent terminology
-- Detailed system specifications
-
-The use of AI assistance enhances the documentation quality while maintaining human oversight and domain expertise throughout the architectural design process.
+Die Nutzung der KI-Unterstützung verbessert die Dokumentationsqualität bei gleichzeitiger Beibehaltung der menschlichen Aufsicht und Domänenexpertise während des gesamten Architekturdesignprozesses.
 
 ---
 
-*Note: This documentation is continuously evolving and maintained to reflect the current state of the architecture.*
+*Hinweis: Diese Dokumentation entwickelt sich kontinuierlich weiter und wird gepflegt, um den aktuellen Stand der Architektur widerzuspiegeln.*

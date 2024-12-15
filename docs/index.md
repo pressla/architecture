@@ -15,6 +15,7 @@
 - [Service Architecture](service-architecture.md)
 - [Technology Stack](technology-stack.md)
 - [UI Journey Einlesen/Match](ui-journey-einlesen-match.md)
+- [Beispiel: Kubernetes Deployment Skalierung](kubernetes-deployment.md)
 
 ## etc
 - [AI Stack](detail_AI_pipeline_assumptions.md)

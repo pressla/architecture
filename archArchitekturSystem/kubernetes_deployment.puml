@@ -1,30 +1,50 @@
-@startuml Kubernetes Deployment Chart
-skinparam style strictuml
-skinparam ParticipantPadding 20
-skinparam BoxPadding 10
+@startuml Kubernetes Deployment Architecture
+skinparam componentStyle uml2
 
-|Infrastructure|
-start
-:Nginx;
-:Rancher;
-:Prometheus;
-:SecOps;
+' Styling
+!theme plain
+skinparam node {
+    BackgroundColor lightblue
+    BorderColor black
+}
 
-|Airflow Core|
-:Airflow Frontend;
-:Airflow Scheduler;
-:MySQL Database;
-:DAGs Storage Block;
+' Custom stereotypes
+skinparam defaultTextAlignment center
 
-|Worker Pods|
-fork
-  :Worker Pod 1;
-fork again
-  :Worker Pod 2;
-fork again
-  :Worker Pod 3;
-end fork
-note right: Replica Set controlled\nby Airflow Scheduler
+frame "namespace Kubernetes workflows" {
+    node "node-controller: Infrastructure Layer" {
+        component "Nginx" as nginx <<Service>>
+        component "Rancher" as rancher <<Service>>
+        component "Prometheus" as prometheus <<Service>>
+        component "SecOps" as secops <<Service>>
+    }
 
-stop
+    node "node-coordinator:Airflow Core Layer" {
+        component "Airflow Frontend" as frontend <<Deployment>>
+        component "Airflow Scheduler" as scheduler <<StatefulSet>>
+        Database "MySQL" as mysql <<StatefulSet>>
+        Folder "DAGs Storage" as dags <<PersistentVolume>>
+    }
+
+    node "node-workers: Worker Layer" {
+        component "Worker Pod 1" as worker1 <<Pod>>
+        component "Worker Pod 2" as worker2 <<Pod>>
+        component "Worker Pod 3" as worker3 <<Pod>>
+    }
+}
+
+' Core relationships only
+nginx --> frontend : routes
+frontend --> scheduler : communicates
+scheduler --> mysql : persists state
+scheduler --> dags : reads/writes
+scheduler --> worker1 : controls
+scheduler --> worker2 : controls
+scheduler --> worker3 : controls
+
+note bottom of worker1
+  Replica Set managed by
+  Airflow Scheduler
+end note
+
 @enduml
