@@ -20,8 +20,6 @@
 ## etc
 - [AI Stack](detail_AI_pipeline_assumptions.md)
 - [OAuth2 Model](security/oauth2-model.md)
-
-## Prozess
 - [Product Innovation](process/product-innovation.md)
 
 ---

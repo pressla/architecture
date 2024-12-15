@@ -175,48 +175,6 @@ package "Interface Adapters" {
 - 3D-Visualisierung
 - VR-System
 
-```plantuml
-@startuml
-package "Frameworks und Treiber" {
-    package "Frontend" #lightblue{
-        [Angular Application]
-        [BIM viewer xeokit.js]
-        [WebVR Interface]
-    }
-
-    package "Backend" #lightblue{
-        [Spring Boot Server]
-        [PostgreSQL Database]
-        [Micromessaging Kafka]
-        [Pipeline Airflow]
-    }
-
-    package "External Systems" #yellow {
-        [AutoCAD API]
-        [SAP ERP]
-        [Payment Gateway]
-    }
-
-    package "Infrastructure" #grey{
-        [Docker Container]
-        [Kubernetes Cluster]
-        [IaC Services]
-    }
-
-    [Angular Application] --> [Spring Boot Server]
-    [BIM viewer xeokit.js] --> [Angular Application]
-    [WebVR Interface] --> [Angular Application]
-    [Spring Boot Server] --> [PostgreSQL Database]
-    [Spring Boot Server] --> [Micromessaging Kafka]
-    [Spring Boot Server] --> [Pipeline Airflow]
-    [Spring Boot Server] --> [AutoCAD API]
-    [Spring Boot Server] --> [SAP ERP]
-    [Spring Boot Server] --> [Payment Gateway]
-    [Docker Container] --> [Kubernetes Cluster]
-    [Kubernetes Cluster] --> [IaC Services]
-}
-@enduml
-```
 
 ## 3. Technische Anforderungsanalyse
 

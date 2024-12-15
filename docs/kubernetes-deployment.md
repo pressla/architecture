@@ -7,7 +7,7 @@ Dieses Dokument beschreibt die Kubernetes Deployment-Architektur für unser Airf
 ## Architekturübersicht
 
 ```plantuml
-!include ../archArchitekturSystem/kubernetes_deployment.puml
+!include kubernetes_deployment.puml
 ```
 
 Das obige Diagramm veranschaulicht unsere Kubernetes Deployment-Architektur innerhalb des "Kubernetes workflows" Namespace, bestehend aus drei Hauptknoten:

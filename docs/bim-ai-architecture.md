@@ -138,11 +138,16 @@ flowchart TB;
 
 ```plantuml
 @startuml NVIDIA NIM Processing Pipeline
-!theme materia-outline
+!theme plain
 skinparam backgroundColor transparent
 skinparam componentStyle rectangle
 skinparam linetype ortho
 skinparam ArrowColor red
+
+skinparam package {
+    BackgroundColor lightblue
+    BorderColor black
+}
 
 top to bottom direction
 

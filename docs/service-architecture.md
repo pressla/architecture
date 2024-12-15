@@ -1,10 +1,10 @@
-# Service Interface Architecture
+# Service-Schnittstellenarchitektur
 
-This document provides a comprehensive overview of the system's service architecture, including core business services, gateway and identity management, and support services.
+Dieses Dokument bietet einen umfassenden Überblick über die Service-Architektur des Systems, einschließlich der Kern-Geschäftsdienste, Gateway- und Identitätsverwaltung sowie Unterstützungsdienste.
 
-## Core Business Services Architecture
+## Architektur der Kern-Geschäftsdienste
 
-This layer handles the main functionality of the modular house planning system. It shows how different services interact to process house plans, manage configurations, provide visualizations, and calculate costs. The architecture uses a message broker for event-driven communication, ensuring loose coupling between services while maintaining data consistency across the platform.
+Diese Schicht behandelt die Hauptfunktionalität des modularen Hausplanungssystems. Sie zeigt, wie verschiedene Dienste zusammenarbeiten, um Hauspläne zu verarbeiten, Konfigurationen zu verwalten, Visualisierungen bereitzustellen und Kosten zu berechnen. Die Architektur verwendet einen Message Broker für ereignisgesteuerte Kommunikation und gewährleistet damit eine lose Kopplung zwischen den Diensten bei gleichzeitiger Datenkonsistenz über die gesamte Plattform.
 
 ```plantuml
 @startuml Core Business Services Architecture
@@ -66,9 +66,9 @@ storageService ..> planService : "version management"
 @enduml
 ```
 
-## Gateway and Identity Architecture
+## Gateway- und Identitätsarchitektur
 
-This layer represents the security and access control layer of the system. It shows how the API Gateway manages all incoming requests and integrates with the Identity & Access Management service to ensure secure access to the platform. The architecture implements a robust authentication and authorization system, supporting both web and VR interfaces while maintaining centralized user management.
+Diese Schicht repräsentiert die Sicherheits- und Zugriffssteuerungsschicht des Systems. Sie zeigt, wie das API-Gateway alle eingehenden Anfragen verwaltet und mit dem Identitäts- und Zugriffsverwaltungsdienst integriert wird, um einen sicheren Zugriff auf die Plattform zu gewährleisten. Die Architektur implementiert ein robustes Authentifizierungs- und Autorisierungssystem, das sowohl Web- als auch VR-Schnittstellen unterstützt und gleichzeitig eine zentralisierte Benutzerverwaltung beibehält.
 
 ```plantuml
 @startuml Gateway and Identity Architecture
@@ -107,9 +107,9 @@ vrUI --> gateway
 @enduml
 ```
 
-## Support Services Architecture
+## Architektur der Unterstützungsdienste
 
-This layer outlines the architecture of the support services that facilitate collaboration, notification, and system integration within our platform. It ensures scalable, loosely coupled services that can evolve independently while maintaining robust communication channels.
+Diese Schicht beschreibt die Architektur der Unterstützungsdienste, die die Zusammenarbeit, Benachrichtigung und Systemintegration innerhalb unserer Plattform ermöglichen. Sie gewährleistet skalierbare, lose gekoppelte Dienste, die sich unabhängig voneinander entwickeln können und dabei robuste Kommunikationskanäle aufrechterhalten.
 
 ```plantuml
 @startuml Support Services Architecture
@@ -155,30 +155,30 @@ collabService ..> notifyService : "triggers notifications"
 @enduml
 ```
 
-### Components Description
+### Komponentenbeschreibung
 
-#### Core Services
-- **House Plan Service**: Manages upload and analysis of house plans
-- **Planning & Configuration Service**: Handles module configuration and planning
-- **3D Visualization Service**: Provides rendering and VR visualization capabilities
-- **Cost Estimation Service**: Calculates costs and generates offers
-- **Plan Storage Service**: Manages plan storage and versioning
+#### Kerndienste
+- **House Plan Service**: Verwaltet das Hochladen und die Analyse von Hausplänen
+- **Planning & Configuration Service**: Behandelt Modulkonfiguration und Planung
+- **3D Visualization Service**: Bietet Rendering- und VR-Visualisierungsfähigkeiten
+- **Cost Estimation Service**: Berechnet Kosten und erstellt Angebote
+- **Plan Storage Service**: Verwaltet Planspeicherung und Versionierung
 
-#### Gateway and Identity Services
-- **API Gateway**: Central entry point for all client requests
-- **Identity & Access Management**: Handles authentication and user management
-- **User DB**: Stores user information and credentials
-- **Identity Message Broker**: Manages user-related events
+#### Gateway- und Identitätsdienste
+- **API Gateway**: Zentraler Eingangspunkt für alle Client-Anfragen
+- **Identity & Access Management**: Behandelt Authentifizierung und Benutzerverwaltung
+- **User DB**: Speichert Benutzerinformationen und Anmeldedaten
+- **Identity Message Broker**: Verwaltet benutzerbezogene Ereignisse
 
-#### Support Services
-- **Collaboration Service**: Provides real-time chat and comment functionality
-- **Notification Service**: Handles email and push notifications
-- **Integration Service**: Manages external system integrations
-- **Support Message Broker**: Enables asynchronous communication between services
+#### Unterstützungsdienste
+- **Collaboration Service**: Bietet Echtzeit-Chat- und Kommentarfunktionalität
+- **Notification Service**: Behandelt E-Mail- und Push-Benachrichtigungen
+- **Integration Service**: Verwaltet externe Systemintegrationen
+- **Support Message Broker**: Ermöglicht asynchrone Kommunikation zwischen Diensten
 
-### Communication Flow
-1. All client requests go through the API Gateway for authentication
-2. Core services communicate through the Core Message Broker
-3. Support services use the Support Message Broker for asynchronous communication
-4. External systems integrate through dedicated integration services
-5. Services maintain loose coupling through event-driven architecture
+### Kommunikationsfluss
+1. Alle Client-Anfragen durchlaufen das API-Gateway zur Authentifizierung
+2. Kerndienste kommunizieren über den Core Message Broker
+3. Unterstützungsdienste nutzen den Support Message Broker für asynchrone Kommunikation
+4. Externe Systeme integrieren sich über dedizierte Integrationsdienste
+5. Dienste behalten durch ereignisgesteuerte Architektur eine lose Kopplung bei
