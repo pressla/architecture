@@ -19,7 +19,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Disclaimer: disclaimer.md
+  - Disclosure: disclaimer.md
   - Vorgaben:
     - Aufgabe: Input/modular-house-planning-system.md
     - Designübersicht: Input/design-overview-de.md
@@ -33,8 +33,8 @@ nav:
     - Service Architecture: service-architecture.md
     - Technology Stack: technology-stack.md
     - UI Journey Einlesen/Match: ui-journey-einlesen-match.md
+    - Beispiel Deployment Model: kubernetes-deployment.md
   - etc:
     - AI Stack: detail_AI_pipeline_assumptions.md
     - OAuth2 Model: security/oauth2-model.md
-  - Prozess:
     - Product Innovation: process/product-innovation.md
