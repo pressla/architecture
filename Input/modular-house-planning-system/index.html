@@ -1,0 +1,1408 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/Input/modular-house-planning-system/">
+      
+      
+        <link rel="prev" href="../../disclaimer/">
+      
+      
+        <link rel="next" href="../design-overview-de/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Aufgabe - ModulHaus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aufgabe-entwicklung-der-softwarearchitektur-fur-die-hausplanungs-und-konfigurationsplattform" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ModulHaus" class="md-header__button md-logo" aria-label="ModulHaus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ModulHaus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aufgabe
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ModulHaus" class="md-nav__button md-logo" aria-label="ModulHaus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ModulHaus
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../disclaimer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disclosure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vorgaben
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Vorgaben
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Aufgabe
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Aufgabe
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#projekt-modularhaus-planungssystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projekt: ModularHaus Planungssystem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Projekt: ModularHaus Planungssystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unternehmensprofil" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unternehmensprofil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projektbeschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projektbeschreibung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funktionale-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funktionale Anforderungen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funktionale Anforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benutzerregistrierung-und-verwaltung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benutzerregistrierung und -verwaltung
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hausplan-upload-und-analyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hausplan-Upload und Analyse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manuelle-planung-und-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manuelle Planung und Konfiguration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3d-visualisierung-und-virtual-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D-Visualisierung und Virtual Reality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kostenschatzung-und-angebotserstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kostenschätzung und Angebotserstellung
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speicherung-und-abruf-von-planen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speicherung und Abruf von Plänen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kollaborative-funktionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kollaborative Funktionen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benachrichtigungssystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benachrichtigungssystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrationen
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nicht-funktionale-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nicht-funktionale Anforderungen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nicht-funktionale Anforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skalierbarkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skalierbarkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verfugbarkeit-und-zuverlassigkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verfügbarkeit und Zuverlässigkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sicherheit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benutzerfreundlichkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benutzerfreundlichkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wartbarkeit-und-erweiterbarkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wartbarkeit und Erweiterbarkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interoperabilitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interoperabilität
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aufgabenstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aufgabenstellung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabenstellung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architekturdesign" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architekturdesign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technologieauswahl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technologieauswahl
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-overview-de/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Designübersicht
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Analyse
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Analyse
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis/requirements-analyse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anforderungsanalyse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presentation/presentation_executive_de/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Details und feasibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Architektur
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Architektur
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bim-ai-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BIM AI Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bim-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BIM Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../service-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technology-stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technology Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ui-journey-einlesen-match/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UI Journey Einlesen/Match
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beispiel Deployment Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    etc
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            etc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../detail_AI_pipeline_assumptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/oauth2-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OAuth2 Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../process/product-innovation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Innovation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#projekt-modularhaus-planungssystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projekt: ModularHaus Planungssystem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Projekt: ModularHaus Planungssystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unternehmensprofil" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unternehmensprofil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projektbeschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Projektbeschreibung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funktionale-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funktionale Anforderungen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funktionale Anforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benutzerregistrierung-und-verwaltung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benutzerregistrierung und -verwaltung
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hausplan-upload-und-analyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hausplan-Upload und Analyse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manuelle-planung-und-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manuelle Planung und Konfiguration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3d-visualisierung-und-virtual-reality" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D-Visualisierung und Virtual Reality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kostenschatzung-und-angebotserstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kostenschätzung und Angebotserstellung
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speicherung-und-abruf-von-planen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speicherung und Abruf von Plänen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kollaborative-funktionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kollaborative Funktionen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benachrichtigungssystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benachrichtigungssystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrationen
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nicht-funktionale-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nicht-funktionale Anforderungen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nicht-funktionale Anforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skalierbarkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skalierbarkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verfugbarkeit-und-zuverlassigkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verfügbarkeit und Zuverlässigkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sicherheit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benutzerfreundlichkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benutzerfreundlichkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wartbarkeit-und-erweiterbarkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wartbarkeit und Erweiterbarkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interoperabilitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interoperabilität
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aufgabenstellung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aufgabenstellung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aufgabenstellung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architekturdesign" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architekturdesign
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technologieauswahl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technologieauswahl
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="aufgabe-entwicklung-der-softwarearchitektur-fur-die-hausplanungs-und-konfigurationsplattform">Aufgabe: Entwicklung der Softwarearchitektur für die Hausplanungs- und Konfigurationsplattform</h1>
+<h2 id="projekt-modularhaus-planungssystem">Projekt: ModularHaus Planungssystem</h2>
+<h3 id="unternehmensprofil">Unternehmensprofil</h3>
+<p>ModularHaus GmbH ist ein führendes Bauunternehmen, das sich auf die industrielle Fertigung von modularen Häusern spezialisiert hat, ein Haus wird aus mehreren Modulen zusammengebaut. Mit über 400 verschiedenen Standardmodulen bietet das Unternehmen maßgeschneiderte Wohnlösungen an, die effizient und kostengünstig produziert werden können.</p>
+<h3 id="projektbeschreibung">Projektbeschreibung</h3>
+<p>Das Ziel dieses Projekts ist die Entwicklung einer umfassenden Softwarelösung, die es Kunden und dem Vertrieb ermöglicht, modulare Häuser zu planen und zu konfigurieren. Die Software muss in der Lage sein, bestehende Hauspläne einzulesen, diese zu analysieren und in die verfügbaren Standardmodule zu zerlegen und eine intuitive Benutzeroberfläche zur manuellen Planung und Anpassung der Module bereitzustellen.</p>
+<h2 id="funktionale-anforderungen">Funktionale Anforderungen</h2>
+<h3 id="benutzerregistrierung-und-verwaltung">Benutzerregistrierung und -verwaltung</h3>
+<ul>
+<li>Möglichkeit für Kunden und Vertriebsmitarbeiter, sich zu registrieren, anzumelden und ihre Profile zu verwalten</li>
+<li>Rollen- und Berechtigungssystem zur Unterscheidung zwischen Kunden und Vertriebsmitarbeitern</li>
+</ul>
+<h3 id="hausplan-upload-und-analyse">Hausplan-Upload und Analyse</h3>
+<ul>
+<li>Funktion zum Hochladen bestehender Hauspläne in verschiedenen Formaten (z.B. PDF, CAD)</li>
+<li>Algorithmus zur automatischen Analyse und Zerlegung der Hauspläne in die 400 Standardmodule</li>
+</ul>
+<h3 id="manuelle-planung-und-konfiguration">Manuelle Planung und Konfiguration</h3>
+<ul>
+<li>Drag-and-Drop-Oberfläche zur manuellen Erstellung und Anpassung von Hausplänen aus den verfügbaren Standardmodulen</li>
+<li>Echtzeit-Visualisierung der konfigurierten Häuser</li>
+</ul>
+<h3 id="3d-visualisierung-und-virtual-reality">3D-Visualisierung und Virtual Reality</h3>
+<ul>
+<li>3D-Visualisierung der geplanten Häuser zur besseren Vorstellung der Konfiguration</li>
+<li>Option für virtuelle Rundgänge durch das geplante Haus</li>
+</ul>
+<h3 id="kostenschatzung-und-angebotserstellung">Kostenschätzung und Angebotserstellung</h3>
+<ul>
+<li>Automatische Berechnung der Kosten basierend auf den ausgewählten Modulen und Zusatzoptionen</li>
+<li>Möglichkeit zur Erstellung und Export von formellen Angeboten für Kunden</li>
+</ul>
+<h3 id="speicherung-und-abruf-von-planen">Speicherung und Abruf von Plänen</h3>
+<ul>
+<li>Speicherung von Planungsprojekten zur späteren Bearbeitung und Überprüfung</li>
+<li>Versionsverwaltung zur Nachverfolgung von Änderungen</li>
+</ul>
+<h3 id="kollaborative-funktionen">Kollaborative Funktionen</h3>
+<ul>
+<li>Unterstützung für die gleichzeitige Bearbeitung eines Plans durch mehrere Benutzer</li>
+<li>Kommunikationswerkzeuge (z.B. Chat, Kommentarfunktion) zur besseren Zusammenarbeit</li>
+</ul>
+<h3 id="benachrichtigungssystem">Benachrichtigungssystem</h3>
+<ul>
+<li>Echtzeit-Benachrichtigungen für Benutzer über den Status ihrer Planungsprojekte und wichtige Ereignisse</li>
+</ul>
+<h3 id="integrationen">Integrationen</h3>
+<ul>
+<li>Schnittstellen zur Integration mit gängigen Architektur- und Planungssoftwares (z.B. AutoCAD, Revit)</li>
+<li>APIs zur Datenübertragung und Synchronisierung mit internen Systemen (z.B. ERP, Produktionssysteme)</li>
+</ul>
+<h2 id="nicht-funktionale-anforderungen">Nicht-funktionale Anforderungen</h2>
+<h3 id="skalierbarkeit">Skalierbarkeit</h3>
+<ul>
+<li>Die Software muss skalierbar sein, um eine wachsende Anzahl von Benutzern und Projekten zu unterstützen</li>
+<li>Unterstützung für Cloud-basierte Infrastrukturen zur dynamischen Skalierung der Ressourcen</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>Schnelle Lade- und Antwortzeiten, auch bei komplexen Planungsprojekten</li>
+<li>Optimierung der Algorithmen zur Analyse und Zerlegung der Hauspläne</li>
+</ul>
+<h3 id="verfugbarkeit-und-zuverlassigkeit">Verfügbarkeit und Zuverlässigkeit</h3>
+<ul>
+<li>Hohe Verfügbarkeit der Software, um Ausfallzeiten zu minimieren</li>
+<li>Robuste Backup- und Wiederherstellungsmechanismen zur Sicherstellung der Datenintegrität</li>
+</ul>
+<h3 id="sicherheit">Sicherheit</h3>
+<ul>
+<li>Umsetzung von Sicherheitsmaßnahmen zum Schutz sensibler Daten (z.B. SSL-Verschlüsselung, Authentifizierung, Autorisierung)</li>
+<li>Einhaltung von Datenschutzrichtlinien und -bestimmungen (z.B. DSGVO)</li>
+</ul>
+<h3 id="benutzerfreundlichkeit">Benutzerfreundlichkeit</h3>
+<ul>
+<li>Intuitive und leicht verständliche Benutzeroberfläche</li>
+<li>Detaillierte Benutzeranleitungen und Hilfefunktionen</li>
+</ul>
+<h3 id="wartbarkeit-und-erweiterbarkeit">Wartbarkeit und Erweiterbarkeit</h3>
+<ul>
+<li>Modularer Aufbau der Software zur einfachen Wartung und Erweiterung</li>
+<li>Dokumentation des Codes und der Architektur zur Unterstützung zukünftiger Entwicklungen</li>
+</ul>
+<h3 id="interoperabilitat">Interoperabilität</h3>
+<ul>
+<li>Unterstützung verschiedener Dateiformate für den Import und Export von Hausplänen</li>
+<li>Kompatibilität mit gängigen Betriebssystemen und Browsern</li>
+</ul>
+<h2 id="aufgabenstellung">Aufgabenstellung</h2>
+<p>Bitte bereiten sie ein Power Point Präsentation vor (Max 20 min) mit den folgenden Themen.
+Bitte treffen sie eigenständig Annahmen, falls Dinge nicht klar sind.</p>
+<h3 id="architekturdesign">Architekturdesign</h3>
+<ul>
+<li>Entwicklung einer modernen, skalierbaren und robusten Softwarearchitektur, die die Anforderungen erfüllt</li>
+<li>Definition der Systemkomponenten, ihrer Schnittstellen und Interaktionen</li>
+<li>Erstellung von Architektur-Diagrammen (z.B. UML-Diagramme, etc.)</li>
+</ul>
+<h3 id="technologieauswahl">Technologieauswahl</h3>
+<ul>
+<li>Evaluierung und Auswahl geeigneter Technologien, Frameworks und Tools für die Implementierung</li>
+<li>Entscheidung über den Einsatz von Cloud-Diensten, Datenbanken und Frontend-Technologien</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
