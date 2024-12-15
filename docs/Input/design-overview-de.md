@@ -178,35 +178,37 @@ package "Interface Adapters" {
 ```plantuml
 @startuml
 package "Frameworks und Treiber" {
-    package "Frontend" {
-        [React Application]
+    package "Frontend" #lightblue{
+        [Angular Application]
         [BIM viewer xeokit.js]
         [WebVR Interface]
     }
 
-    package "Backend" {
+    package "Backend" #lightblue{
         [Spring Boot Server]
         [PostgreSQL Database]
         [Micromessaging Kafka]
+        [Pipeline Airflow]
     }
 
-    package "External Systems" {
+    package "External Systems" #yellow {
         [AutoCAD API]
         [SAP ERP]
         [Payment Gateway]
     }
 
-    package "Infrastructure" {
+    package "Infrastructure" #grey{
         [Docker Container]
         [Kubernetes Cluster]
         [IaC Services]
     }
 
-    [React Application] --> [Spring Boot Server]
-    [BIM viewer xeokit.js] --> [React Application]
-    [WebVR Interface] --> [React Application]
+    [Angular Application] --> [Spring Boot Server]
+    [BIM viewer xeokit.js] --> [Angular Application]
+    [WebVR Interface] --> [Angular Application]
     [Spring Boot Server] --> [PostgreSQL Database]
     [Spring Boot Server] --> [Micromessaging Kafka]
+    [Spring Boot Server] --> [Pipeline Airflow]
     [Spring Boot Server] --> [AutoCAD API]
     [Spring Boot Server] --> [SAP ERP]
     [Spring Boot Server] --> [Payment Gateway]
