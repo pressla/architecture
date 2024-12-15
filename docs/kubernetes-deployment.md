@@ -7,7 +7,57 @@ Dieses Dokument beschreibt die Kubernetes Deployment-Architektur für unser Airf
 ## Architekturübersicht
 
 ```plantuml
-!include kubernetes_deployment.puml
+@startuml Kubernetes Deployment Architecture
+skinparam componentStyle uml2
+
+' Styling
+!theme plain
+skinparam node {
+    BackgroundColor lightblue
+    BorderColor black
+}
+
+' Custom stereotypes
+skinparam defaultTextAlignment center
+
+frame "namespace Kubernetes workflows" {
+    node "node-controller: Infrastructure Layer" {
+        component "Nginx" as nginx <<Service>>
+        component "Rancher" as rancher <<Service>>
+        component "Prometheus" as prometheus <<Service>>
+        component "SecOps" as secops <<Service>>
+    }
+
+    node "node-coordinator:Airflow Core Layer" {
+        component "Airflow Frontend" as frontend <<Deployment>>
+        component "Airflow Scheduler" as scheduler <<StatefulSet>>
+        Database "MySQL" as mysql <<StatefulSet>>
+        Folder "DAGs Storage" as dags <<PersistentVolume>>
+    }
+
+    node "node-workers: Worker Layer" {
+        component "Worker Pod 1" as worker1 <<Pod>>
+        component "Worker Pod 2" as worker2 <<Pod>>
+        component "Worker Pod 3" as worker3 <<Pod>>
+    }
+}
+
+' Core relationships only
+nginx --> frontend : routes
+frontend --> scheduler : communicates
+scheduler --> mysql : persists state
+scheduler --> dags : reads/writes
+scheduler --> worker1 : controls
+scheduler --> worker2 : controls
+scheduler --> worker3 : controls
+
+note bottom of worker1
+  Replica Set managed by
+  Airflow Scheduler
+end note
+
+@enduml
+
 ```
 
 Das obige Diagramm veranschaulicht unsere Kubernetes Deployment-Architektur innerhalb des "Kubernetes workflows" Namespace, bestehend aus drei Hauptknoten:
