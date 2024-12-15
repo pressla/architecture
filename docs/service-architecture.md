@@ -15,30 +15,30 @@ skinparam component {
 }
 
 ' External Systems
-component "3D Engine\n(Unity/Unreal)" <<external>> as ThreeD
+component "3D Engine\n(xeokit))" <<external>> as ThreeD
 
 ' Core Services
-component "House Plan Service" as planService {
+component "House Plan Service" as planService #lightblue {
     port "upload" as planUpload
     port "analyze" as planAnalyze
 }
 
-component "Planning & Configuration Service" as configService {
+component "Planning & Configuration Service" as configService #lightblue {
     port "config" as configPort
     port "modules" as modulesPort
 }
 
-component "3D Visualization Service" as vizService {
+component "3D Visualization Service" as vizService #lightblue  {
     port "render" as renderPort
     port "vr" as vrPort
 }
 
-component "Cost Estimation Service" as costService {
+component "Cost Estimation Service" as costService #lightblue {
     port "calculate" as calcPort
     port "offer" as offerPort
 }
 
-component "Plan Storage Service" as storageService {
+component "Plan Storage Service" as storageService #lightblue{
     port "store" as storePort
     port "version" as versionPort
 }
@@ -78,13 +78,13 @@ component "Web Frontend" as webUI
 component "VR Frontend" as vrUI
 
 ' API Gateway
-component "API Gateway" as gateway {
+component "API Gateway" as gateway #lightblue {
     port "auth" as gwAuth
     port "api" as gwApi
 }
 
 ' Identity Services
-component "Identity & Access Management" as iam {
+component "Identity & Access Management" as iam #lightblue {
     port "auth" as iamAuth
     port "user-mgmt" as iamUser
 }
@@ -124,17 +124,17 @@ component "CAD Systems\n(AutoCAD, Revit)" <<external>> as CAD
 component "ERP System" <<external>> as ERP
 
 ' Support Services
-component "Collaboration Service" as collabService {
+component "Collaboration Service" as collabService #lightblue {
     port "chat" as chatPort
     port "comments" as commentPort
 }
 
-component "Notification Service" as notifyService {
+component "Notification Service" as notifyService #lightblue {
     port "email" as emailPort
     port "push" as pushPort
 }
 
-component "Integration Service" as integrationService {
+component "Integration Service" as integrationService #lightblue {
     port "cad" as cadPort
     port "erp" as erpPort
 }

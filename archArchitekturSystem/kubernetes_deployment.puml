@@ -1,0 +1,30 @@
+@startuml Kubernetes Deployment Chart
+skinparam style strictuml
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+
+|Infrastructure|
+start
+:Nginx;
+:Rancher;
+:Prometheus;
+:SecOps;
+
+|Airflow Core|
+:Airflow Frontend;
+:Airflow Scheduler;
+:MySQL Database;
+:DAGs Storage Block;
+
+|Worker Pods|
+fork
+  :Worker Pod 1;
+fork again
+  :Worker Pod 2;
+fork again
+  :Worker Pod 3;
+end fork
+note right: Replica Set controlled\nby Airflow Scheduler
+
+stop
+@enduml

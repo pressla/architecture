@@ -8,7 +8,7 @@ Die Architektur der Kerngeschäftsdienste definiert die grundlegenden Dienste, d
 ```mermaid
 graph TB
     %% Externe Systeme
-    Sketchfab["Sketchfab<br/>3D Plattform"]
+    Sketchfab["xeokit<br/>3D Plattform"]
     style Sketchfab fill:#lightgray,stroke:#gray
 
     %% Kerndienste
@@ -40,7 +40,7 @@ graph TB
     %% Infrastrukturkomponenten
     planDB[(Plan DB)]
     versionDB[(Versions DB)]
-    coreBroker{{"Kern-Nachrichtenbroker"}}
+    coreBroker{{"Core-Nachrichtenbroker"}}
 
     %% Verbindungen
     Sketchfab --> vizService

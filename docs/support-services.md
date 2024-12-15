@@ -13,21 +13,21 @@ skinparam component {
 }
 
 ' External Systems
-component "CAD Systems\n(AutoCAD, Revit)" <<external>> as CAD
+component "CAD Systems\n(AutoCAD, Revit)" <<external>> as CAD 
 component "ERP System" <<external>> as ERP
 
 ' Support Services
-component "Collaboration Service" as collabService {
+component "Collaboration Service" as collabService #lightblue {
     port "chat" as chatPort
     port "comments" as commentPort
 }
 
-component "Notification Service" as notifyService {
+component "Notification Service" as notifyService #lightblue  {
     port "email" as emailPort
     port "push" as pushPort
 }
 
-component "Integration Service" as integrationService {
+component "Integration Service" as integrationService #lightblue {
     port "cad" as cadPort
     port "erp" as erpPort
 }
